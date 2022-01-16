@@ -1,0 +1,84 @@
+﻿<Window x:Name="frmMain" x:Class="Straub_Bernadette_proiect.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Straub_Bernadette_proiect"
+        xmlns:CustomCommands="clr-namespace:Straub_Bernadette_proiect.CustomCommands"
+        mc:Ignorable="d"
+        Title="Virtual Italian Restaurant" Height="450" Width="800" ResizeMode="NoResize" Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" Loaded="frmMain_Loaded">
+    <Grid MenuItem.Click="MenuItemsShow_Click">
+        <GroupBox x:Name="gbPasta" Header="Pasta" Margin="46,33,588,217" FontWeight="Bold">
+            <Canvas>
+                <Label x:Name="lblBolognese" Content="Bolognese" Canvas.Top="26" FontWeight="Normal"/>
+                <Label x:Name="lblCarbonara" Content="Carbonara" Canvas.Top="68" RenderTransformOrigin="0.053,-0.382" FontWeight="Normal"/>
+                <Label x:Name="lblPesto" Content="Pesto" Canvas.Top="114" RenderTransformOrigin="0.079,-0.112" FontWeight="Normal"/>
+                <TextBox x:Name="txtCarbonara" Canvas.Left="73" Canvas.Top="72" Text="0" TextWrapping="Wrap" Width="58" IsReadOnly="True" FontWeight="Normal"/>
+                <TextBox x:Name="txtBolognese" Canvas.Left="74" Canvas.Top="30" Text="0" TextWrapping="Wrap" Width="57" IsReadOnly="True" FontWeight="Normal"/>
+                <TextBox x:Name="txtPesto" Canvas.Left="73" Canvas.Top="118" Text="0" TextWrapping="Wrap" Width="56" IsReadOnly="True" FontWeight="Normal"/>
+            </Canvas>
+        </GroupBox>
+        <GroupBox x:Name="gbPizza" Header="Pizza" Margin="314,33,314,217" FontWeight="Bold">
+            <Canvas>
+                <Label x:Name="lblTonno" Content="Tonno" Canvas.Top="68" RenderTransformOrigin="0.132,0.157" Canvas.Left="10" FontWeight="Normal"/>
+                <Label x:Name="lblDiavola" Content="Diavola" Canvas.Left="10" Canvas.Top="115" FontWeight="Normal"/>
+                <Label x:Name="lblMargherita" Content="Margherita" Canvas.Left="7" Canvas.Top="20" FontWeight="Normal"/>
+                <TextBox x:Name="txtMargherita" Canvas.Left="86" Canvas.Top="24" Text="0" TextWrapping="Wrap" Width="64" IsReadOnly="True" FontWeight="Normal"/>
+                <TextBox x:Name="txtTonno" Canvas.Left="86" Canvas.Top="72" Text="0" TextWrapping="Wrap" Width="64" IsReadOnly="True" FontWeight="Normal"/>
+                <TextBox x:Name="txtDiavola" Canvas.Left="86" Canvas.Top="119" Text="0" TextWrapping="Wrap" Width="64" IsReadOnly="True" FontWeight="Normal"/>
+            </Canvas>
+        </GroupBox>
+        <GroupBox x:Name="gbDessert" Header="Dessert" Margin="569,33,51,217" FontWeight="Bold">
+            <Canvas>
+                <Label x:Name="lblGelato" Content="Gelato" Canvas.Left="10" Canvas.Top="36" FontWeight="Normal"/>
+                <Label x:Name="lblTiramisu" Content="Tiramisu" Canvas.Left="10" Canvas.Top="91" RenderTransformOrigin="0.526,0.427" FontWeight="Normal"/>
+                <TextBox x:Name="txtGelato" Canvas.Left="84" Canvas.Top="40" Text="0" TextWrapping="Wrap" Width="65" IsReadOnly="True" FontWeight="Normal"/>
+                <TextBox x:Name="txtTiramisu" Canvas.Left="84" Canvas.Top="95" Text="0" TextWrapping="Wrap" Width="65" IsReadOnly="True" FontWeight="Normal"/>
+            </Canvas>
+        </GroupBox>
+        <GroupBox x:Name="gbSale" Header="Current Sale" Margin="46,237,51,20" FontWeight="Bold">
+            <Canvas>
+                <Label x:Name="lblQuantity" Content="Quantity" Canvas.Top="10" FontWeight="Normal"/>
+                <Label x:Name="lblType" Content="Type" Canvas.Left="141" Canvas.Top="10" FontWeight="Normal"/>
+                <Label x:Name="lblPrice" Content="Price" Canvas.Left="346" Canvas.Top="10" FontWeight="Normal"/>
+                <Label x:Name="lblTotal" Content="Total" Canvas.Left="346" Canvas.Top="118"/>
+                <TextBox x:Name="txtQuantity" Canvas.Left="64" Canvas.Top="14" Text="0" TextWrapping="Wrap" Width="58" FontWeight="Normal"/>
+                <ComboBox x:Name="cmbType" Canvas.Left="183" Canvas.Top="14" Width="120" SelectionChanged="cmbType_SelectionChanged"/>
+                <TextBox x:Name="txtPrice" Canvas.Left="389" Canvas.Top="14" Text="0" TextWrapping="Wrap" Width="57" IsReadOnly="True" FontWeight="Normal"/>
+                <TextBox x:Name="txtTotal" Canvas.Left="389" Canvas.Top="122" Text="0" TextWrapping="Wrap" Width="57" IsReadOnly="True"/>
+                <ListBox x:Name="lstSale" Height="63" Width="436" Canvas.Left="10" Canvas.Top="50"/>
+                <Button x:Name="btnAdd" Content="Prepare Dish" Canvas.Left="519" Canvas.Top="35" Width="111" FontWeight="Normal" Click="btnAdd_Click"/>
+                <Button x:Name="btnRemoveItem" Content="Remove Dish" Canvas.Left="519" Canvas.Top="67" Width="111" FontWeight="Normal" Click=" btnRemoveItem_Click"/>
+                <Button x:Name="btnCheckout" Content="Checkout" Canvas.Left="519" Canvas.Top="121" Width="111" FontWeight="Bold" Click=" btnCheckOut_Click"/>
+            </Canvas>
+        </GroupBox>
+        <Menu x:Name="mnuMain" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top"
+Width="131" Margin="10,7,0,0">
+            <MenuItem Header="File">
+                <MenuItem Header="Exit" Click="exitToolStripMenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Dishes">
+                <MenuItem Header="Make">
+                    <MenuItem Header="Pasta" Click="MenuItems_Click">
+                        <MenuItem x:Name="bologneseMenuItem" Header="Bolognese" Click="bologneseToolStripMenuItem_Click" IsCheckable="True"/>
+                        <MenuItem x:Name="carbonaraMenuItem" Header="Carbonara" Click="carbonaraToolStripMenuItem_Click" IsCheckable="True"/>
+                        <MenuItem x:Name="pestoMenuItem" Header="Pesto" Click="pestoToolStripMenuItem_Click" IsCheckable="True"/>
+                    </MenuItem>
+                    <MenuItem Header="Pizza" Click="MenuItems_Click">
+                        <MenuItem x:Name="margheritaMenuItem" Header="Margherita" Click="margheritaToolStripMenuItem_Click" IsCheckable="True"/>
+                        <MenuItem x:Name="tonnoMenuItem" Header="Tonno" Click="tonnoToolStripMenuItem_Click" IsCheckable="True"/>
+                        <MenuItem x:Name="diavolaMenuItem" Header="Diavola" Click="diavolaToolStripMenuItem_Click" IsCheckable="True"/>
+                    </MenuItem>
+                    <MenuItem Header="Dessert" Click="MenuItems_Click">
+                        <MenuItem x:Name="gelatoMenuItem" Header="Gelato" Click="gelatoToolStripMenuItem_Click" IsCheckable="True"/>
+                        <MenuItem x:Name="tiramisuMenuItem" Header="Tiramisu" Click="tiramisuToolStripMenuItem_Click" IsCheckable="True"/>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="mnuStop" Header="Stop"
+                Click="stopToolStripMenuItem_Click" InputGestureText="Ctrl+S" Command="{x:Static CustomCommands:StopCommand.Launch}"/>
+                <MenuItem Header="Inventory" Command="ApplicationCommands.Print" ></MenuItem>
+            </MenuItem>
+        </Menu>
+
+    </Grid>
+</Window>
